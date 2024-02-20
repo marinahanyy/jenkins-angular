@@ -3,14 +3,14 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub ')
     }
-    stages {
+    stages{
       //   stage('Checkout') {
       //       steps {
       //           // Checkout your code from version control
       //           git 'https://github.com/marinahanyy/angular-project.git'
       //       }
       //   }
-       stage('Build') {
+        stage('Build') {
             steps {
                 // Build Docker image
                 sh 'docker build -t marinaaaaa/angular-image:latest .'
