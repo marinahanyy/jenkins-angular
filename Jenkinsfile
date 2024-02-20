@@ -10,11 +10,17 @@ pipeline {
       //           git 'https://github.com/marinahanyy/angular-project.git'
       //       }
       //   }
+       stage('Build') {
+            steps {
+                // Build Docker image
+                sh 'docker build -t marinaaaaa/angular-image:latest .'
+            }
+        }
         stage('Install Node.js and Angular CLI') {
             steps {
                 // Install Node.js
               //  sh 'curl -sL https://deb.nodesource.com/setup_14.x | -E bash -'
-               //   sh 'apt-get install -y nodejs'
+                  sh 'apt-get install -y nodejs'
 
                 // Install Angular CLI
                 sh 'npm install -g @angular/cli'
