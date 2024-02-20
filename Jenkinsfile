@@ -10,22 +10,22 @@ pipeline {
       //           git 'https://github.com/marinahanyy/angular-project.git'
       //       }
       //   }
-      //   stage('Install Node.js and Angular CLI') {
-      //       steps {
-      //           // Install Node.js
-      //           sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-      //           sh 'sudo apt-get install -y nodejs'
+        stage('Install Node.js and Angular CLI') {
+            steps {
+                // Install Node.js
+                sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+                sh 'sudo apt-get install -y nodejs'
 
-      //           // Install Angular CLI
-      //           sh 'npm install -g @angular/cli'
-      //       }
-      //   }
-       // stage('Install dependencies') {
-         //   steps {
-                // Install project dependencies
-          //      sh 'npm install'
-         //   }
-       // }
+                // Install Angular CLI
+                sh 'npm install -g @angular/cli'
+            }
+        }
+       stage('Install dependencies') {
+           steps {
+                Install project dependencies
+               sh 'npm install'
+           }
+       }
         stage('Run unit tests') {
             steps {
                 // Run ng test
