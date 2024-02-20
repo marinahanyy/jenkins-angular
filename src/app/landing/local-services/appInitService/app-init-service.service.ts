@@ -9,7 +9,7 @@ export class AppInitService {
   constructor(
     private sessionStorageService: SessionStorageService,
     private langService: LanguageService,
-  ) { }
+  ) {}
 
   init() {
     const langKey = this.sessionStorageService.retrieve('locale') ?? 'ru';

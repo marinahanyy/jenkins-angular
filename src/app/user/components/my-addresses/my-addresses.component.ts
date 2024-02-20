@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { Renderer2, ElementRef, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-my-addresses',
   templateUrl: './my-addresses.component.html',
-  styleUrls: ['./my-addresses.component.scss']
+  styleUrls: ['./my-addresses.component.scss'],
 })
 export class MyAddressesComponent {
   isModalOpen: boolean = false;
@@ -20,34 +26,40 @@ export class MyAddressesComponent {
     acceptTerms: new FormControl(false),
     passportNum: new FormControl(''),
     passportData: new FormControl(''),
-    birthDate: new FormControl('')
+    birthDate: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder,
-    private renderer: Renderer2, private el: ElementRef) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private renderer: Renderer2,
+    private el: ElementRef,
+  ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group(
-      {
-        name: ['', Validators.required],
-        surname: ['', Validators.required],
-        birthDate: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        acceptTerms: [false, [Validators.required, Validators.requiredTrue]],
-        city: ['', [Validators.required, Validators.minLength(9)]],
-        home: ['', [Validators.required, Validators.minLength(6)]],
-        phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
-        passportNum: ['', Validators.required, Validators.minLength(9)],
-        passportData: ['', Validators.required, Validators.minLength(14)],
-      }
-    );
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      acceptTerms: [false, [Validators.required, Validators.requiredTrue]],
+      city: ['', [Validators.required, Validators.minLength(9)]],
+      home: ['', [Validators.required, Validators.minLength(6)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
+      passportNum: ['', Validators.required, Validators.minLength(9)],
+      passportData: ['', Validators.required, Validators.minLength(14)],
+    });
   }
 
   private disableScroll() {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
 
     this.renderer.setStyle(document.body, 'position', 'fixed');
-    this.renderer.setStyle(document.body, 'width', `calc(100% - ${scrollbarWidth}px)`);
+    this.renderer.setStyle(
+      document.body,
+      'width',
+      `calc(100% - ${scrollbarWidth}px)`,
+    );
   }
 
   private enableScroll() {
@@ -80,11 +92,7 @@ export class MyAddressesComponent {
     console.log(JSON.stringify(this.form.value, null, 2));
   }
 
-
-
   isVisible = false;
-
-
 
   showModal(): void {
     this.isVisible = true;

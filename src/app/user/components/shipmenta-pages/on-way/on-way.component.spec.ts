@@ -8,7 +8,7 @@ describe('OnWayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OnWayComponent]
+      declarations: [OnWayComponent],
     });
     fixture = TestBed.createComponent(OnWayComponent);
     component = fixture.componentInstance;

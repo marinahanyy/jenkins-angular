@@ -5,5 +5,4 @@ export class ResetPassword {
   public confirnmPassword!: string;
 }
 
-
 //

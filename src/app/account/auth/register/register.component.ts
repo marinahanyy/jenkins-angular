@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import Validation from './validation';
 import { AuthService } from '../service/register.service';
 import { v4 as uuidv4 } from 'uuid'; // Import the uuid library for generating UUIDs
@@ -11,7 +16,7 @@ declare const intlTelInput: any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   showPassword: boolean = false;
@@ -24,10 +29,12 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    const mobileCodeInput = document.getElementById('mobile_code') as HTMLInputElement;
+    const mobileCodeInput = document.getElementById(
+      'mobile_code',
+    ) as HTMLInputElement;
     if (mobileCodeInput) {
       const iti = intlTelInput(mobileCodeInput, {
         initialCountry: 'uz',
@@ -44,7 +51,14 @@ export class RegisterComponent {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(40)]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(40),
+          ],
+        ],
         confirmPassword: ['', Validators.required],
         acceptTerms: [false, [Validators.required, Validators.requiredTrue]],
         phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
@@ -52,16 +66,19 @@ export class RegisterComponent {
       },
       {
         validators: [Validation.match('password', 'confirmPassword')],
-      }
+      },
     );
   }
 
   generateUUID(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      const r = (Math.random() * 16) | 0;
-      const v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      },
+    );
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -88,7 +105,7 @@ export class RegisterComponent {
       id: this.generateUUID(),
       createdDate: isoDateString,
       updatedDate: isoDateString,
-    }
+    };
 
     this.authService.registerUser(userObj).subscribe({
       next: (res) => {

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-my-shipments',
   templateUrl: './my-shipments.component.html',
-  styleUrls: ['./my-shipments.component.scss']
+  styleUrls: ['./my-shipments.component.scss'],
 })
 export class MyShipmentsComponent {
   modalOpen = false;
@@ -44,7 +44,9 @@ export class MyShipmentsComponent {
   }
 
   get orderSteps(): number[] {
-    return Array(this.totalSteps).fill(0).map((_, index) => index + 1);
+    return Array(this.totalSteps)
+      .fill(0)
+      .map((_, index) => index + 1);
   }
 
   selectOption(option: string) {
@@ -56,7 +58,7 @@ export class MyShipmentsComponent {
     const newItem = {
       itemName: '',
       quantity: null,
-      price: null
+      price: null,
     };
     this.orderItems.push(newItem);
   }
@@ -72,17 +74,17 @@ export class MyShipmentsComponent {
       childPanel: [
         {
           active: false,
-          name: 'This is panel header 1-1'
-        }
-      ]
+          name: 'This is panel header 1-1',
+        },
+      ],
     },
     {
       active: false,
-      name: 'This is panel header 2'
+      name: 'This is panel header 2',
     },
     {
       active: false,
-      name: 'This is panel header 3'
-    }
+      name: 'This is panel header 3',
+    },
   ];
 }

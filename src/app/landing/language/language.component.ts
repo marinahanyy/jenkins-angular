@@ -1,16 +1,22 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
-import {Subject, takeUntil} from "rxjs";
-import {SessionStorageService} from "ngx-webstorage";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
+import { SessionStorageService } from 'ngx-webstorage';
 import { LANGUAGES } from '../constants/languega/language.constants';
 import { LanguageService } from '../local-services/language-service/language.service';
-
 
 @Component({
   selector: 'app-language',
   templateUrl: 'language.component.html',
   styleUrls: ['language.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageComponent implements AfterViewInit, OnDestroy, OnInit {
   readonly languages = LANGUAGES;
@@ -22,8 +28,7 @@ export class LanguageComponent implements AfterViewInit, OnDestroy, OnInit {
     private readonly translateService: TranslateService,
     private readonly cdr: ChangeDetectorRef,
     private readonly sessionStorageService: SessionStorageService,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.sessionStorageLang = this.sessionStorageService.retrieve('locale');
@@ -40,9 +45,9 @@ export class LanguageComponent implements AfterViewInit, OnDestroy, OnInit {
 
   changeLanguage(languageKey: string): void {
     this.langService.currentLang = languageKey;
-    this.langService.change(languageKey)
+    this.langService
+      .change(languageKey)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => (this.langService.currentLang = languageKey));
   }
-
 }

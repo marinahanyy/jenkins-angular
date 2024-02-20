@@ -6,11 +6,10 @@ import * as echarts from 'echarts';
 @Component({
   selector: 'app-my-parcels',
   templateUrl: './my-parcels.component.html',
-  styleUrls: ['./my-parcels.component.scss']
+  styleUrls: ['./my-parcels.component.scss'],
 })
 export class MyParcelsComponent {
-
-  constructor(private clipboard: Clipboard) { }
+  constructor(private clipboard: Clipboard) {}
 
   ngOnInit(): void {
     const chartDom = document.getElementById('main')!;
@@ -74,7 +73,6 @@ export class MyParcelsComponent {
       link: '',
     },
   ];
-
 
   customOptions = {
     loop: true,

@@ -1,13 +1,33 @@
 <div>
-  <button class="d-flex align-center h-auto" nz-button nz-dropdown nzType="link" nzTrigger="click" type="button"
-    [nzDropdownMenu]="langMenu">
-    <span class="lang {{langService.currentLang === undefined ? sessionStorageLang : langService.currentLang}}"></span>
-    <p class="lang-text">{{'doslogistic.web.home.language' | translate}}</p>
+  <button
+    class="d-flex align-center h-auto"
+    nz-button
+    nz-dropdown
+    nzType="link"
+    nzTrigger="click"
+    type="button"
+    [nzDropdownMenu]="langMenu"
+  >
+    <span
+      class="lang {{
+        langService.currentLang === undefined
+          ? sessionStorageLang
+          : langService.currentLang
+      }}"
+    ></span>
+    <p class="lang-text">{{ "doslogistic.web.home.language" | translate }}</p>
   </button>
   <nz-dropdown-menu #langMenu="nzDropdownMenu">
     <ul nz-menu>
-      <li nz-menu-item nzMatchRouter *ngFor="let language of languages" (click)="changeLanguage(language)"
-        [ngClass]="{ 'ant-dropdown-menu-item-active': language === langService.currentLang }">
+      <li
+        nz-menu-item
+        nzMatchRouter
+        *ngFor="let language of languages"
+        (click)="changeLanguage(language)"
+        [ngClass]="{
+          'ant-dropdown-menu-item-active': language === langService.currentLang
+        }"
+      >
         <span class="lang {{ language }} mr-2"></span>
         {{ language | findLanguageFromKey }}
       </li>

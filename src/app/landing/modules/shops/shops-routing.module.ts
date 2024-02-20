@@ -15,25 +15,29 @@ import { OthersComponent } from './components/others/others.component';
 import { HouseholdComponent } from './components/household/household.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent, children: [
-    {path: '', redirectTo:'popularStores', pathMatch:'full'},
-    {path: 'popularStores', component: PopularStoresComponent},
-    {path: 'markets', component: MarketsComponent},
-    {path: 'departmenStores', component: DepartmentStoresComponent},
-    {path: 'clothes', component: ClothesComponent},
-    {path: 'shoes', component: ShoesComponent},
-    {path: 'beauty-products', component: BeautyProductsComponent},
-    {path: 'children-products', component: ChildrenProductsComponent},
-    {path: 'electronics', component: ElectronicsComponent},
-    {path: 'household', component: HouseholdComponent},
-    {path: 'sports-products', component: SportsProductsComponent},
-    {path: 'health-products', component: HealthProductsComponent},
-    {path: 'others', component: OthersComponent},
-  ]},
+  {
+    path: '',
+    component: MainComponent,
+    children: [
+      { path: '', redirectTo: 'popularStores', pathMatch: 'full' },
+      { path: 'popularStores', component: PopularStoresComponent },
+      { path: 'markets', component: MarketsComponent },
+      { path: 'departmenStores', component: DepartmentStoresComponent },
+      { path: 'clothes', component: ClothesComponent },
+      { path: 'shoes', component: ShoesComponent },
+      { path: 'beauty-products', component: BeautyProductsComponent },
+      { path: 'children-products', component: ChildrenProductsComponent },
+      { path: 'electronics', component: ElectronicsComponent },
+      { path: 'household', component: HouseholdComponent },
+      { path: 'sports-products', component: SportsProductsComponent },
+      { path: 'health-products', component: HealthProductsComponent },
+      { path: 'others', component: OthersComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ShopsRoutingModule { }
+export class ShopsRoutingModule {}

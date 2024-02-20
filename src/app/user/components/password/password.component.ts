@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import Validation from './validation';
 declare const intlTelInput: any;
 
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss']
+  styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
   submitted = false;
@@ -20,10 +26,12 @@ export class PasswordComponent {
     confirmPassword: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    const mobileCodeInput = document.getElementById('mobile_code') as HTMLInputElement;
+    const mobileCodeInput = document.getElementById(
+      'mobile_code',
+    ) as HTMLInputElement;
     if (mobileCodeInput) {
       const iti = intlTelInput(mobileCodeInput, {
         initialCountry: 'uz',
@@ -36,13 +44,20 @@ export class PasswordComponent {
 
     this.form = this.formBuilder.group(
       {
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(40)]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(40),
+          ],
+        ],
         confirmPassword: ['', Validators.required],
-        currentPassword: ['', Validators.required]
+        currentPassword: ['', Validators.required],
       },
       {
         validators: [Validation.match('password', 'confirmPassword')],
-      }
+      },
     );
   }
 

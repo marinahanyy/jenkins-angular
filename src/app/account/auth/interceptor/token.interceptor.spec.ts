@@ -4,13 +4,12 @@ import { TokenInterceptor } from './token.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('TokenInterceptor', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      HttpClientModule],
-    providers: [
-      TokenInterceptor
-      ]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [TokenInterceptor],
+    }),
+  );
 
   it('should be created', () => {
     const interceptor: TokenInterceptor = TestBed.inject(TokenInterceptor);

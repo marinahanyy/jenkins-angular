@@ -16,7 +16,6 @@ import { SportsProductsComponent } from './components/sports-products/sports-pro
 import { HealthProductsComponent } from './components/health-products/health-products.component';
 import { OthersComponent } from './components/others/others.component';
 
-
 @NgModule({
   declarations: [
     MainComponent,
@@ -31,11 +30,8 @@ import { OthersComponent } from './components/others/others.component';
     HouseholdComponent,
     SportsProductsComponent,
     HealthProductsComponent,
-    OthersComponent
+    OthersComponent,
   ],
-  imports: [
-    CommonModule,
-    ShopsRoutingModule
-  ]
+  imports: [CommonModule, ShopsRoutingModule],
 })
-export class ShopsModule { }
+export class ShopsModule {}

@@ -7,16 +7,13 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 @NgModule({
-  declarations: [
-    AdminComponent,
-    AdminLayoutComponent
-  ],
+  declarations: [AdminComponent, AdminLayoutComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NzLayoutModule,
     NzIconModule,
-    NzBreadCrumbModule
-  ]
+    NzBreadCrumbModule,
+  ],
 })
 export class AdminModule {}

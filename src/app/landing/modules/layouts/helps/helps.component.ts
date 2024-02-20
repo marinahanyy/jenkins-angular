@@ -5,7 +5,7 @@ import { DropDownAnimation } from './animation';
   selector: 'app-helps',
   templateUrl: './helps.component.html',
   styleUrls: ['./helps.component.scss'],
-  animations: [DropDownAnimation]
+  animations: [DropDownAnimation],
 })
 export class HelpsComponent {
   isOpen1 = false;
@@ -37,7 +37,9 @@ export class HelpsComponent {
   }
 
   scrollToDropdown(dropdownNumber: number): void {
-    const dropdownElement = document.getElementById(`dropdown${dropdownNumber}`);
+    const dropdownElement = document.getElementById(
+      `dropdown${dropdownNumber}`,
+    );
     if (dropdownElement) {
       dropdownElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

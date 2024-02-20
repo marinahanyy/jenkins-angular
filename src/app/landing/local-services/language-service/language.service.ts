@@ -4,17 +4,17 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { Observable, mergeMap, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   public currentLang: string;
 
   constructor(
     private readonly translateService: TranslateService,
-    private readonly sessionStorageService: SessionStorageService
+    private readonly sessionStorageService: SessionStorageService,
   ) {
     this.currentLang = this.translateService.currentLang;
-    this.onChange().subscribe(lang => (this.currentLang = lang));
+    this.onChange().subscribe((lang) => (this.currentLang = lang));
   }
 
   getCurrent(): string {
@@ -26,12 +26,11 @@ export class LanguageService {
   }
 
   onChange(): Observable<string> {
-    return this.translateService.onLangChange
-      .pipe(
-        mergeMap((event: LangChangeEvent) => {
-          this.sessionStorageService.store('locale', event.lang);
-          return of(event.lang);
-        })
-      );
+    return this.translateService.onLangChange.pipe(
+      mergeMap((event: LangChangeEvent) => {
+        this.sessionStorageService.store('locale', event.lang);
+        return of(event.lang);
+      }),
+    );
   }
 }

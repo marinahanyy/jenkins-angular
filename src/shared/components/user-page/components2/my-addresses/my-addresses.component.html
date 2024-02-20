@@ -1,26 +1,41 @@
 <div class="content">
   <h2 class="header-title">Mening manzillarim</h2>
   <div class="page-routing">
-    <p class="btn1" routerLinkActive="active-link" [routerLink]="['myAcceptance']">Mening Qabul qiluvchilarim</p>
-    <p class="btn2" routerLinkActive="active-link" [routerLink]="['mySenders']">Mening Jo'natuvchilarim</p>
+    <p
+      class="btn1"
+      routerLinkActive="active-link"
+      [routerLink]="['myAcceptance']"
+    >
+      Mening Qabul qiluvchilarim
+    </p>
+    <p class="btn2" routerLinkActive="active-link" [routerLink]="['mySenders']">
+      Mening Jo'natuvchilarim
+    </p>
   </div>
 </div>
 
 <div class="container">
-  <button class="add-button" routerLinkActive="active" (click)="showModal()">Manzil qo'shish</button>
+  <button class="add-button" routerLinkActive="active" (click)="showModal()">
+    Manzil qo'shish
+  </button>
   <ng-container>
     <router-outlet></router-outlet>
   </ng-container>
 </div>
 
 <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button> -->
-    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-      <ng-container *nzModalContent>
-        <p>Content one</p>
-        <p>Content two</p>
-        <p>Content three</p>
-      </ng-container>
-    </nz-modal>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
 
 <!-- <div *ngIf="isModalOpen" class="modal-overlay">
   <div class="modal">

@@ -1,6 +1,18 @@
-import { Component, HostBinding, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Renderer2,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-navbar',
@@ -12,19 +24,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         'open',
         style({
           right: '0',
-        })
+        }),
       ),
       state(
         'closed',
         style({
           right: '-300px',
-        })
+        }),
       ),
-      transition('open <=> closed', [animate('0.3s')])
+      transition('open <=> closed', [animate('0.3s')]),
     ]),
   ],
 })
-
 export class NavbarComponent {
   isHomePage: boolean = false;
   isActive = false;
@@ -39,7 +50,11 @@ export class NavbarComponent {
     return this.isOpen ? 'open' : 'closed';
   }
 
-  constructor(private router: Router, private renderer: Renderer2, private el: ElementRef) { }
+  constructor(
+    private router: Router,
+    private renderer: Renderer2,
+    private el: ElementRef,
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -86,7 +101,10 @@ export class NavbarComponent {
 
   getFormattedDeliveryCost(): string {
     const deliveryCost = this.getDeliveryCost();
-    return deliveryCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return deliveryCost.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
   }
 
   getDeliveryCost(): number {

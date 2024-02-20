@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-shoes',
   templateUrl: './shoes.component.html',
-  styleUrls: ['./shoes.component.scss']
+  styleUrls: ['./shoes.component.scss'],
 })
 export class ShoesComponent {
-  title = 'Shoes'
+  title = 'Shoes';
 
-  data: any[] = []
+  data: any[] = [];
 
   ngOnInit() {
     this.data = [
@@ -19,8 +19,7 @@ export class ShoesComponent {
       { name: 'H_M', img: './assets/images/shops/h_m.jpg' },
       { name: 'Yoox', img: './assets/images/shops/yoox.png' },
       { name: 'Nike', img: './assets/images/shops/nike.jpg' },
-      { name: 'Dolls-Kill', img: './assets/images/shops/dolls-kill.jpeg' }
-    ]
+      { name: 'Dolls-Kill', img: './assets/images/shops/dolls-kill.jpeg' },
+    ];
   }
-
 }

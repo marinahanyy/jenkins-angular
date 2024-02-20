@@ -6,15 +6,17 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContactsService {
   private apiUrl = `${API_BASE_URL}/Messages`;
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
-  postMessage(message: any): Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}`, message)
+  postMessage(message: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, message);
   }
 }

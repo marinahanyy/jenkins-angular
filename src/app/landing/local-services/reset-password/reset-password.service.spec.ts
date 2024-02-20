@@ -8,8 +8,7 @@ describe('ResetPasswordService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule],
+      imports: [HttpClientModule],
     });
     service = TestBed.inject(ResetPasswordService);
   });

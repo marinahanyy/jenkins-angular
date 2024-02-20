@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 declare const intlTelInput: any;
 
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
-  styleUrls: ['./personal-info.component.scss']
+  styleUrls: ['./personal-info.component.scss'],
 })
-
 export class PersonalInfoComponent {
   submitted = false;
 
@@ -19,13 +24,15 @@ export class PersonalInfoComponent {
     acceptTerms: new FormControl(false),
     passportNum: new FormControl(''),
     passportData: new FormControl(''),
-    birthDate: new FormControl('')
+    birthDate: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    const mobileCodeInput = document.getElementById('mobile_code') as HTMLInputElement;
+    const mobileCodeInput = document.getElementById(
+      'mobile_code',
+    ) as HTMLInputElement;
     if (mobileCodeInput) {
       const iti = intlTelInput(mobileCodeInput, {
         initialCountry: 'uz',
@@ -36,18 +43,16 @@ export class PersonalInfoComponent {
       });
     }
 
-    this.form = this.formBuilder.group(
-      {
-        name: ['', Validators.required],
-        surname: ['', Validators.required],
-        birthDate: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        acceptTerms: [false, [Validators.required, Validators.requiredTrue]],
-        phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
-        passportNum: ['', Validators.required, Validators.minLength(9)],
-        passportData: ['', Validators.required, Validators.minLength(14)],
-      }
-    );
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      acceptTerms: [false, [Validators.required, Validators.requiredTrue]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
+      passportNum: ['', Validators.required, Validators.minLength(9)],
+      passportData: ['', Validators.required, Validators.minLength(14)],
+    });
   }
 
   get f(): { [key: string]: AbstractControl } {

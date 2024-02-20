@@ -9,23 +9,21 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
-import {AuthService} from "../../../landing/local-services/auth/auth.service";
-
-
+import { AuthService } from '../../../landing/local-services/auth/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
     private toast: NgToastService,
-    private router: Router
+    private router: Router,
   ) {}
 
   title?: string;
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     const myToken = this.authService.getToken();
 
@@ -48,7 +46,7 @@ export class TokenInterceptor implements HttpInterceptor {
           }
         }
         return throwError(() => new Error(this.title));
-      })
+      }),
     );
   }
 }

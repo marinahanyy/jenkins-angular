@@ -8,7 +8,7 @@ describe('LayoutsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LayoutsComponent]
+      declarations: [LayoutsComponent],
     });
     fixture = TestBed.createComponent(LayoutsComponent);
     component = fixture.componentInstance;

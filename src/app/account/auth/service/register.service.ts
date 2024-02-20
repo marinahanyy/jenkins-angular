@@ -6,14 +6,17 @@ import jwt_decode from 'jwt-decode';
 import { API_BASE_URL } from 'src/api.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = `${API_BASE_URL}/Accounts`;
   private userPayload: any;
   tokenDecode: any;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
     this.userPayload = this.decodeToken();
   }
 
@@ -61,7 +64,6 @@ export class AuthService {
 
     return null;
   }
-
 
   decodeToken() {
     const token = this.getToken()!;

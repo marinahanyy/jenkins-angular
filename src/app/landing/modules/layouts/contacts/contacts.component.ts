@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ContactsService } from './services/contacts.services';
 import { GenerateUUIDService } from 'src/app/constants/generateId.service';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.scss']
+  styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent {
   selectedPage: string = 'uzbekistan';
@@ -16,8 +22,8 @@ export class ContactsComponent {
   constructor(
     private formBuilder: FormBuilder,
     private contactsService: ContactsService,
-    private generateUUIDService: GenerateUUIDService
-  ) { }
+    private generateUUIDService: GenerateUUIDService,
+  ) {}
 
   showGermany() {
     this.selectedPage = 'germany';
@@ -40,16 +46,14 @@ export class ContactsComponent {
   });
 
   ngOnInit() {
-    this.form = this.formBuilder.group(
-      {
-        email: ['', [Validators.required, Validators.email]],
-        fullName: ['', [Validators.required]],
-        subject: ['', Validators.required],
-        text: ['', [Validators.required]],
-        phone: ['', [Validators.required]],
-        city: ['', [Validators.required]],
-      },
-    );
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      fullName: ['', [Validators.required]],
+      subject: ['', Validators.required],
+      text: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+    });
   }
 
   onSubmit(): void {
@@ -71,19 +75,21 @@ export class ContactsComponent {
       city: this.form.value.city,
       id: this.generateUUIDService.generateUUID(),
       createdDate: isoDateString,
-      updatedDate: this.isUpdate() ? isoDateString : undefined
-    }
+      updatedDate: this.isUpdate() ? isoDateString : undefined,
+    };
 
-    this.contactsService.postMessage(userObj).subscribe(res=>{
+    this.contactsService.postMessage(userObj).subscribe((res) => {
       console.log(res);
       this.form.reset();
-    })
+    });
     this.submitted = false;
     console.log(JSON.stringify(this.form.value, null, 2));
   }
 
   isUpdate(): boolean {
-    return Object.keys(this.initialFormState).some(key => this.initialFormState[key] !== this.form.value[key]);
+    return Object.keys(this.initialFormState).some(
+      (key) => this.initialFormState[key] !== this.form.value[key],
+    );
   }
 
   get f(): { [key: string]: AbstractControl } {

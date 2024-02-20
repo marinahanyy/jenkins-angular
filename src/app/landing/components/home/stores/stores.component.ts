@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',
-  styleUrls: ['./stores.component.scss']
+  styleUrls: ['./stores.component.scss'],
 })
 export class StoresComponent {
   customOptions = {
@@ -28,35 +28,35 @@ export class StoresComponent {
   cards = [
     {
       id: 1,
-      image: '../../../../assets/images/carausel-shops/icons8-amazon.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-amazon.svg',
     },
     {
       id: 2,
-      image: '../../../../assets/images/carausel-shops/icons8-apple.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-apple.svg',
     },
     {
       id: 3,
-      image: '../../../../assets/images/carausel-shops/icons8-ebay.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-ebay.svg',
     },
     {
       id: 4,
-      image: '../../../../assets/images/carausel-shops/icons8-iherb.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-iherb.svg',
     },
     {
       id: 5,
-      image: '../../../../assets/images/carausel-shops/icons8-microsoft.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-microsoft.svg',
     },
     {
       id: 6,
-      image: '../../../../assets/images/carausel-shops/icons8-uniqlo.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-uniqlo.svg',
     },
     {
       id: 7,
-      image: '../../../../assets/images/carausel-shops/icons8-nike.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-nike.svg',
     },
     {
       id: 8,
-      image: '../../../../assets/images/carausel-shops/icons8-walmart.svg'
+      image: '../../../../assets/images/carausel-shops/icons8-walmart.svg',
     },
   ];
 }
